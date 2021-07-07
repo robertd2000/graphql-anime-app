@@ -1,36 +1,46 @@
 import Img from '../utils/img';
 import preloader from '../assets/empty.png';
 import { Data } from '../types';
+import { Link } from 'react-router-dom';
 
 type AnimeItemType = {
   data: Data;
 };
 
 export const AnimeItem: React.FC<AnimeItemType> = ({ data }) => {
-  const { title, status, coverImage, episodes, seasonYear, genres } = data;
+  const { title, id, coverImage, episodes, seasonYear, genres } = data;
 
   const fixedGenres = genres.length > 3 ? genres.slice(0, 3) : genres;
   return (
     <div className="card">
-      <h2 className="card-title">
-        {title.english === null || title.english === ''
-          ? title.native
-          : title.english}
-      </h2>
-      <Img preloader={preloader} img={coverImage.large} />
-      <div className="card-desc">
-        <h2>{title.english}</h2>
-        <h2>{title.native}</h2>
-        Season year - {seasonYear}
-        <br />
-        {fixedGenres
-          ? fixedGenres.map((genre: string) => <div key={genre}>{genre}</div>)
-          : ''}
-        <br />
-        <div className="card-link">
-          {/* <Link to={`/movie/${id}`}>More</Link> */}
+      <Link to={`/anime/${id}`}>
+        <div className="img-inner">
+          <Img preloader={preloader} img={coverImage.extraLarge} />
         </div>
-      </div>
+
+        <h2 className="card-title">
+          {title.english === null || title.english === ''
+            ? title.native
+            : title.english}
+        </h2>
+        <div className="card-desc">
+          <h2>{title.english}</h2>
+          <h2>{title.native}</h2>
+          Season year - {seasonYear}
+          <br />
+          <ul>
+            <h3>Genres:</h3>
+            {fixedGenres
+              ? fixedGenres.map((genre: string) => (
+                  <li key={genre + Math.random()}>{genre}</li>
+                ))
+              : ''}
+          </ul>
+          <br />
+          <div>Episodes - {episodes}</div>
+          <div className="card-link"></div>
+        </div>
+      </Link>
     </div>
   );
 };

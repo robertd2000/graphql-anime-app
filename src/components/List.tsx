@@ -1,36 +1,30 @@
-import { useQuery } from '@apollo/client';
-import { useEffect, useState } from 'react';
-import { GET_ANIME_LIST } from '../query/queries';
 import { Data } from '../types';
+import Loader from '../utils/Loader';
 import { AnimeItem } from './AnimeItem';
 import { Paginator } from './Paginator';
 
-export const List = () => {
-  const totalPages = 4185;
-  const [page, setPage] = useState(1);
-  const { data, loading } = useQuery(GET_ANIME_LIST, {
-    variables: {
-      page,
-    },
-  });
-  const [list, setList] = useState([]);
+type ListType = {
+  page: number;
+  loading: boolean;
+  list: any;
+  totalPages: number;
+  changePage: (page: number) => void;
+};
 
-  useEffect(() => {
-    if (!loading) {
-      setList(data.Page.media);
-    }
-  }, [data]);
-
-  const changePage = (page: number) => {
-    setPage(page);
-  };
-
+export const List: React.FC<ListType> = ({
+  page,
+  loading,
+  list,
+  totalPages,
+  changePage,
+}) => {
   return (
     <div className={'cards-inner'}>
+      {loading ? <Loader /> : null}
       <div className={'cards'}>
         {list
           ? list.map((page: Data) => {
-              return <AnimeItem key={page.id} data={page} />;
+              return <AnimeItem key={page.id + Math.random()} data={page} />;
             })
           : ''}
       </div>
