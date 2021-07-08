@@ -4,10 +4,12 @@ import { Route } from 'react-router-dom';
 import './App.css';
 import { Characters } from './components/Characters';
 import { Header } from './components/Header';
-import { ItemDetailsContainer } from './components/ItemDetails';
+import { ItemDetailsContainer } from './components/AnimeDetails/ItemDetails';
 import { List } from './components/List';
 import { Search } from './components/Search';
 import { GET_ANIME_LIST } from './query/queries';
+import { CharacterDetailWrapper } from './components/CharacterDetail/CharacterDetails';
+import { AllCharactersListWrapper } from './components/AnimeDetails/AllAnimeCharactersList';
 
 function App(props: any) {
   const totalPages = 4185;
@@ -52,6 +54,15 @@ function App(props: any) {
         component={() => <ItemDetailsContainer {...props} />}
       />
       <Route exact path="/search-character" component={Characters} />
+      <Route
+        exact
+        path="/character/:id?"
+        component={() => <CharacterDetailWrapper {...props} />}
+      />
+      <Route
+        path="/anime/characters/:id?"
+        component={() => <AllCharactersListWrapper {...props} />}
+      />
     </div>
   );
 }

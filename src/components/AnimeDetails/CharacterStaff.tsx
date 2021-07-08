@@ -1,6 +1,7 @@
-import Img from '../utils/img';
+import Img from '../../utils/img';
 import s from './CharacterStaff.module.css';
-import preloader from '../assets/empty.png';
+import preloader from '../../assets/empty.png';
+import { Link } from 'react-router-dom';
 
 type CharacterStaffType = {
   fullname: string;
@@ -20,15 +21,11 @@ type CharacterStaffType = {
 };
 
 export const CharacterStaff: React.FC<CharacterStaffType> = ({
+  id,
   fullname,
-  native,
   image,
-  age,
   role,
-  voiceActor: {
-    name: { full },
-    image: { medium },
-  },
+  voiceActor: { name: { full = '' } = {}, image: { medium = '' } = {} } = {},
 }) => {
   return (
     <div className={s.card}>
@@ -36,7 +33,9 @@ export const CharacterStaff: React.FC<CharacterStaffType> = ({
         <Img preloader={preloader} img={image} />
       </div>
       <div className={s.description}>
-        <h2>{fullname}</h2>
+        <Link to={`/character/${id}`}>
+          <h2>{fullname}</h2>
+        </Link>
 
         <h3>{role}</h3>
       </div>

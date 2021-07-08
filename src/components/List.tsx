@@ -1,7 +1,7 @@
 import { Data } from '../types';
 import Loader from '../utils/Loader';
 import { AnimeItem } from './AnimeItem';
-import { Paginator } from './Paginator';
+import { Paginator } from '../utils/Paginator';
 
 type ListType = {
   page: number;
@@ -28,11 +28,13 @@ export const List: React.FC<ListType> = ({
             })
           : ''}
       </div>
-      <Paginator
-        totalPages={totalPages}
-        currentPage={page}
-        changePage={changePage}
-      />
+      {totalPages ? (
+        <Paginator
+          totalPages={totalPages}
+          currentPage={page}
+          changePage={changePage}
+        />
+      ) : null}
     </div>
   );
 };

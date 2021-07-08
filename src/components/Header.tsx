@@ -1,5 +1,9 @@
 import { Link } from 'react-router-dom';
 
+const NavBarLink = (props: any) => {
+  return <Link {...props} activeClassName="active" />;
+};
+
 const Header = () => {
   return (
     <div className="header">
@@ -7,15 +11,19 @@ const Header = () => {
         Anime App
       </Link>
       <div className="header-right">
-        <Link to="/" className="active" href="#home">
+        <NavBarLink to="/" activeClassName="active" href="#home">
           Home
-        </Link>
-        <Link to="/search-anime" href="#contact">
+        </NavBarLink>
+        <NavBarLink to="/search-anime" activeClassName="active" href="#contact">
           Search Anime
-        </Link>
-        <Link to="/search-character" href="#contact">
+        </NavBarLink>
+        <NavBarLink
+          to="/search-character"
+          activeClassName="active"
+          href="#contact"
+        >
           Search Character
-        </Link>
+        </NavBarLink>
       </div>
     </div>
   );

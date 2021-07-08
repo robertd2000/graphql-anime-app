@@ -26,6 +26,7 @@ export type CharacterNodeType = {
   };
   age: number;
   gender: string;
+  id: number;
 };
 
 export type edge = {

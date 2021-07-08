@@ -35,9 +35,14 @@
   text-align: center;
   float: right;
   margin-left: 57px;
+  max-width: 100px;
 }
 .photo img {
   max-height: 240px;
+}
+
+.photoRight img {
+  max-width: 100px;
 }
 
 .description {

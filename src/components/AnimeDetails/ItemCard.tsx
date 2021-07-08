@@ -1,11 +1,13 @@
-import Img from '../utils/img';
+import Img from '../../utils/img';
 import s from './ItemCard.module.css';
-import preloader from '../assets/empty.png';
+import preloader from '../../assets/empty.png';
 import { CharactersStaffList } from './CharactersStaffList';
-import { CharacterNodeType, edge } from '../types';
+import { CharacterNodeType, edge } from '../../types';
+import { Link } from 'react-router-dom';
 
 type ItemCardType = {
   data: ItemCardDataType;
+  id: number;
 };
 
 type ItemCardDataType = {
@@ -48,7 +50,7 @@ type ItemCardDataType = {
   };
 };
 
-export const ItemCard: React.FC<ItemCardType> = ({ data }) => {
+export const ItemCard: React.FC<ItemCardType> = ({ data, id }) => {
   const {
     title: { native, english },
     description,
@@ -81,8 +83,12 @@ export const ItemCard: React.FC<ItemCardType> = ({ data }) => {
             <Img img={extraLarge} preloader={preloader} />
           </div>
           <div className={s.movieInfo}>
-            <div className={s.title}>{english}</div>
-            <div className={s.title}>{native}</div>
+            <div className={s.title}>
+              <h2>{english}</h2>
+            </div>
+            <div className={s.title}>
+              <h3>{native}</h3>
+            </div>
 
             <div>{year}</div>
             <div className={s.genresWrapper}>
@@ -100,7 +106,6 @@ export const ItemCard: React.FC<ItemCardType> = ({ data }) => {
               <span>&#9733; {averageScore}</span>
             </div>
           </div>
-          {/* <MovieSuggestions movieSuggestions={movieSuggestions} /> */}
         </div>
       </div>
       <div className={s.synopsis}>
@@ -121,7 +126,7 @@ export const ItemCard: React.FC<ItemCardType> = ({ data }) => {
               fontSize: '30px',
             }}
           >
-            Characters
+            <Link to={`/anime/characters/${id}`}>Characters</Link>
           </h2>
           <CharactersStaffList characters={characters} />
         </div>

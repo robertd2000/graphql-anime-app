@@ -88,7 +88,7 @@ export const GET_ANIME_DETAILS = gql`
         }
       }
       siteUrl
-      characters(sort: [ROLE, RELEVANCE, ID]) {
+      characters(sort: [ROLE, RELEVANCE, ID], perPage: 10) {
         edges {
           role
           id
@@ -102,6 +102,7 @@ export const GET_ANIME_DETAILS = gql`
             }
           }
           node {
+            id
             name {
               full
               native
@@ -119,20 +120,18 @@ export const GET_ANIME_DETAILS = gql`
 `;
 
 export const GET_CHARACTERS = gql`
-  query characters($name: String) {
-    Page(page: 1, perPage: 20) {
+  query characters($name: String, $page: Int) {
+    Page(page: $page, perPage: 20) {
+      pageInfo {
+        total
+      }
       characters(search: $name) {
         name {
-          first
-          middle
-          last
           full
           native
-          userPreferred
         }
         image {
           large
-          medium
         }
         gender
         dateOfBirth {
@@ -142,6 +141,86 @@ export const GET_CHARACTERS = gql`
         }
         age
         id
+        siteUrl
+      }
+    }
+  }
+`;
+
+export const GET_CHARACTER_BY_ID = gql`
+  query character($id: Int) {
+    Character(id: $id) {
+      name {
+        full
+        native
+      }
+      image {
+        large
+      }
+      id
+      gender
+      dateOfBirth {
+        month
+        day
+      }
+      description(asHtml: true)
+      age
+      siteUrl
+      media {
+        edges {
+          node {
+            id
+            title {
+              english
+              native
+            }
+            coverImage {
+              large
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const GET_ALL_ANIME_CHARACTERS = gql`
+  query media($id: Int, $page: Int) {
+    Media(id: $id) {
+      id
+      characters(page: $page, sort: [ROLE, RELEVANCE, ID]) {
+        pageInfo {
+          total
+          perPage
+          currentPage
+          lastPage
+          hasNextPage
+        }
+        edges {
+          role
+          id
+          voiceActors(language: JAPANESE) {
+            id
+            name {
+              full
+            }
+            image {
+              medium
+            }
+          }
+          node {
+            id
+            name {
+              full
+              native
+            }
+            image {
+              medium
+            }
+            age
+            gender
+          }
+        }
       }
     }
   }

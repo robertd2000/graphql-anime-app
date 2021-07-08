@@ -130,3 +130,23 @@ input:focus ~ .highlight {
     background: transparent;
   }
 }
+
+@media (max-width: 768px) {
+  input {
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 300px;
+    border: none;
+    border-bottom: 1px solid #757575;
+  }
+
+  .container {
+    font-family: 'Roboto';
+    width: 300px;
+    margin: 30px auto 0;
+    display: block;
+    background: transparent;
+    padding: 10px 10px 10px;
+  }
+}

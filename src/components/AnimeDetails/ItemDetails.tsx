@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
 import { withRouter } from 'react-router-dom';
-import { GET_ANIME_DETAILS } from '../query/queries';
-import Loader from '../utils/Loader';
+import { GET_ANIME_DETAILS } from '../../query/queries';
+import Loader from '../../utils/Loader';
 import { ItemCard } from './ItemCard';
 
 const ItemDetails = (props: any) => {
@@ -17,7 +17,9 @@ const ItemDetails = (props: any) => {
     return <Loader />;
   }
 
-  return <div>{!loading && data ? <ItemCard data={data.Media} /> : ''}</div>;
+  return (
+    <div>{!loading && data ? <ItemCard data={data.Media} id={id} /> : ''}</div>
+  );
 };
 
 export const ItemDetailsContainer = withRouter(ItemDetails);
