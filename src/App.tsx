@@ -10,6 +10,7 @@ import { Search } from './components/Search';
 import { GET_ANIME_LIST } from './query/queries';
 import { CharacterDetailWrapper } from './components/CharacterDetail/CharacterDetails';
 import { AllCharactersListWrapper } from './components/AnimeDetails/AllAnimeCharactersList';
+import { AllRecomendationsWrapper } from './components/AnimeDetails/AllRecomendations';
 
 function App(props: any) {
   const totalPages = 4185;
@@ -60,8 +61,14 @@ function App(props: any) {
         component={() => <CharacterDetailWrapper {...props} />}
       />
       <Route
+        exact
         path="/anime/characters/:id?"
         component={() => <AllCharactersListWrapper {...props} />}
+      />
+      <Route
+        exact
+        path="/anime/recomendations/:id?"
+        component={() => <AllRecomendationsWrapper {...props} />}
       />
     </div>
   );

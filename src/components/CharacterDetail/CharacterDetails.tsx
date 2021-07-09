@@ -2,6 +2,7 @@ import { useQuery } from '@apollo/client';
 import { Link, withRouter } from 'react-router-dom';
 import { GET_CHARACTER_BY_ID } from '../../query/queries';
 import Loader from '../../utils/Loader';
+import { AnimeRecomendCard } from '../../utils/AnimeRecomendCard';
 import s from '../AnimeDetails/CharacterStaff.module.css';
 import s1 from './Character.module.css';
 
@@ -82,16 +83,13 @@ const CharacterDetail = (props: any) => {
                 },
               } = item;
               return (
-                <div key={id + Math.random()} className={s1.titleCard}>
-                  <Link to={`/anime/${id}`}>
-                    <div>
-                      <img src={limg} alt={limg} />
-                      <span>
-                        <h3>{english ? english : ntitle}</h3>
-                      </span>
-                    </div>
-                  </Link>
-                </div>
+                <AnimeRecomendCard
+                  key={id + Math.random()}
+                  id={id}
+                  english={english}
+                  ntitle={ntitle}
+                  limg={limg}
+                />
               );
             })
           : ''}

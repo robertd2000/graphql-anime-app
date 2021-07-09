@@ -51,6 +51,7 @@ const AllCharactersList = (props: any) => {
 
               return (
                 <CharacterStaff
+                  key={id + Math.random()}
                   id={id}
                   age={age}
                   fullname={full}

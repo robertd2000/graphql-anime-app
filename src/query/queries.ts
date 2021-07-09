@@ -88,6 +88,26 @@ export const GET_ANIME_DETAILS = gql`
         }
       }
       siteUrl
+      recommendations(perPage: 6, sort: [RATING_DESC, ID]) {
+        pageInfo {
+          total
+        }
+        nodes {
+          id
+          rating
+          mediaRecommendation {
+            id
+            title {
+              userPreferred
+              native
+            }
+            status(version: 2)
+            coverImage {
+              large
+            }
+          }
+        }
+      }
       characters(sort: [ROLE, RELEVANCE, ID], perPage: 10) {
         edges {
           role
@@ -219,6 +239,33 @@ export const GET_ALL_ANIME_CHARACTERS = gql`
             }
             age
             gender
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const GET_ALL_RECOMENDATIONS = gql`
+  query media($id: Int, $page: Int) {
+    Media(id: $id) {
+      recommendations(page: $page, perPage: 25, sort: [RATING_DESC, ID]) {
+        pageInfo {
+          total
+        }
+        nodes {
+          id
+          rating
+          mediaRecommendation {
+            id
+            title {
+              userPreferred
+              native
+            }
+            status(version: 2)
+            coverImage {
+              large
+            }
           }
         }
       }

@@ -4,6 +4,7 @@ import preloader from '../../assets/empty.png';
 import { CharactersStaffList } from './CharactersStaffList';
 import { CharacterNodeType, edge } from '../../types';
 import { Link } from 'react-router-dom';
+import { AnimeRecomendCard } from '../../utils/AnimeRecomendCard';
 
 type ItemCardType = {
   data: ItemCardDataType;
@@ -39,14 +40,29 @@ type ItemCardDataType = {
   genres?: [string];
   averageScore: number;
   studios: {
-    nodes: {
-      name: string;
-    };
+    nodes: [{ name: string }];
   };
   siteUrl: string;
   characters: {
     edges: [edge];
     // nodes: [CharacterNodeType];
+  };
+  recommendations: {
+    nodes: [nodesType];
+  };
+};
+
+type nodesType = {
+  mediaRecommendation: {
+    coverImage: {
+      large: string;
+    };
+    id: number;
+    status: string;
+    title: {
+      userPreferred: string;
+      native: string;
+    };
   };
 };
 
@@ -61,22 +77,24 @@ export const ItemCard: React.FC<ItemCardType> = ({ data, id }) => {
     endDate: { year: endYear, month: endMonth, day: endDay },
     episodes,
     bannerImage,
-    studios: {
-      nodes: { name },
-    },
+    studios: { nodes: studios },
     siteUrl,
     countryOfOrigin,
     coverImage: { extraLarge, color },
     averageScore,
     genres,
     characters,
+    recommendations: { nodes },
   } = data;
 
   return (
     <div className={s.bg}>
       <div
         className={s.wrapper}
-        style={{ backgroundImage: `url(${bannerImage})` }}
+        style={{
+          backgroundImage: `url(${bannerImage})`,
+          backgroundColor: color,
+        }}
       >
         <div className={s.container}>
           <div className={s.img}>
@@ -84,7 +102,7 @@ export const ItemCard: React.FC<ItemCardType> = ({ data, id }) => {
           </div>
           <div className={s.movieInfo}>
             <div className={s.title}>
-              <h2>{english}</h2>
+              <h2 style={{ color: 'white', fontSize: '40px' }}> {english}</h2>
             </div>
             <div className={s.title}>
               <h3>{native}</h3>
@@ -110,26 +128,65 @@ export const ItemCard: React.FC<ItemCardType> = ({ data, id }) => {
       </div>
       <div className={s.synopsis}>
         <h3>Synopsis</h3>
-        <span>{description}</span>
+        <div dangerouslySetInnerHTML={{ __html: description }}></div>
+
         <div className={s.movieTechData}>
           <div>Episodes: {episodes}</div>
           <div>Duration: {duration}</div>
           <div>Season: {season}</div>
           <div>Season year: {seasonYear}</div>
+          <div>Country of origin: {countryOfOrigin}</div>
+          <div>
+            Start date: {day}.{month}.{year}{' '}
+          </div>
+          <div>
+            End date: {endDay}.{endMonth}.{endYear}{' '}
+          </div>
+        </div>
+        <div className={s.studios}>
+          <h3>Studios:</h3>
+          {studios
+            ? studios.map((studio) => {
+                return <div>{studio.name}</div>;
+              })
+            : null}
         </div>
         <div>
-          <h2
-            style={{
-              color: 'black',
-              fontStyle: 'normal',
-              textShadow: 'none',
-              fontSize: '30px',
-            }}
-          >
-            <Link to={`/anime/characters/${id}`}>Characters</Link>
-          </h2>
+          <Link to={`/anime/characters/${id}`}>
+            <h2>Characters </h2>
+          </Link>
+
           <CharactersStaffList characters={characters} />
         </div>
+        <div>
+          <Link to={`/anime/recomendations/${id}`}>
+            <h2>Recommendations</h2>
+          </Link>
+
+          <div className={s.charWrapper}>
+            {nodes
+              ? nodes.map((item) => {
+                  const {
+                    mediaRecommendation: {
+                      id,
+                      coverImage: { large: limg },
+                      title: { userPreferred, native: ntitle },
+                    },
+                  } = item;
+                  return (
+                    <AnimeRecomendCard
+                      key={id + Math.random()}
+                      id={id}
+                      english={userPreferred}
+                      ntitle={ntitle}
+                      limg={limg}
+                    />
+                  );
+                })
+              : null}
+          </div>
+        </div>
+
         <a href={siteUrl}>Chech on site</a>
       </div>
     </div>

@@ -13,6 +13,8 @@ const ItemDetails = (props: any) => {
     },
   });
 
+  console.log(data);
+
   if (loading) {
     return <Loader />;
   }

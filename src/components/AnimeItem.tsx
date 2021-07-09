@@ -24,8 +24,8 @@ export const AnimeItem: React.FC<AnimeItemType> = ({ data }) => {
             : title.english}
         </h2>
         <div className="card-desc">
-          <h2>{title.english}</h2>
-          <h2>{title.native}</h2>
+          <h2 style={{ color: 'white' }}>{title.english}</h2>
+          <h2 style={{ color: 'white' }}>{title.native}</h2>
           Season year - {seasonYear}
           <br />
           <ul>

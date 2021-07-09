@@ -34,13 +34,13 @@ export const CharacterStaff: React.FC<CharacterStaffType> = ({
       </div>
       <div className={s.description}>
         <Link to={`/character/${id}`}>
-          <h2>{fullname}</h2>
+          <h3>{fullname}</h3>
         </Link>
 
-        <h3>{role}</h3>
+        <h4>{role}</h4>
       </div>
       <div className={s.descriptionRight}>
-        <h2>{full}</h2>
+        <h3>{full}</h3>
       </div>
       <div className={s.photoRight}>
         <Img preloader={preloader} img={medium} />
