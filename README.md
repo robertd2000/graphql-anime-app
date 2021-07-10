@@ -1,3 +1,33 @@
+React App for searhing anime
+
+## Features:
+
+List of anime
+
+Anime details
+
+Characters details
+
+Anime studios details
+
+Suggestions
+
+Seaching anime
+
+Seaching anime characters
+
+Routing
+
+[GraphQL Queries](https://anilist.co/graphiql?query)
+
+[Web Service](https://anilist.co/)
+
+### Created by React, React Hooks, GraphQL, Apollo
+
+You can [test here](https://robertd2000.github.io/graphql-anime-app/)
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
