@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/graphql-anime-app/static/css/main.28aebac2.chunk.css",
+    "main.js": "/graphql-anime-app/static/js/main.2f626827.chunk.js",
+    "main.js.map": "/graphql-anime-app/static/js/main.2f626827.chunk.js.map",
+    "runtime-main.js": "/graphql-anime-app/static/js/runtime-main.d3258312.js",
+    "runtime-main.js.map": "/graphql-anime-app/static/js/runtime-main.d3258312.js.map",
+    "static/js/2.3b75db00.chunk.js": "/graphql-anime-app/static/js/2.3b75db00.chunk.js",
+    "static/js/2.3b75db00.chunk.js.map": "/graphql-anime-app/static/js/2.3b75db00.chunk.js.map",
+    "static/js/3.f8ac916e.chunk.js": "/graphql-anime-app/static/js/3.f8ac916e.chunk.js",
+    "static/js/3.f8ac916e.chunk.js.map": "/graphql-anime-app/static/js/3.f8ac916e.chunk.js.map",
+    "index.html": "/graphql-anime-app/index.html",
+    "static/css/main.28aebac2.chunk.css.map": "/graphql-anime-app/static/css/main.28aebac2.chunk.css.map",
+    "static/js/2.3b75db00.chunk.js.LICENSE.txt": "/graphql-anime-app/static/js/2.3b75db00.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/graphql-anime-app/static/media/bg.92bc4b5b.jpg",
+    "static/media/empty.817176e3.png": "/graphql-anime-app/static/media/empty.817176e3.png",
+    "static/media/notfound.6eab02e4.png": "/graphql-anime-app/static/media/notfound.6eab02e4.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d3258312.js",
+    "static/js/2.3b75db00.chunk.js",
+    "static/css/main.28aebac2.chunk.css",
+    "static/js/main.2f626827.chunk.js"
+  ]
+}
