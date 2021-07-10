@@ -1,70 +1,70 @@
-import Img from '../../utils/img';
-import s from './ItemCard.module.css';
-import preloader from '../../assets/empty.png';
-import { CharactersStaffList } from './CharactersStaffList';
-import { CharacterNodeType, edge } from '../../types';
-import { Link } from 'react-router-dom';
-import { AnimeRecomendCard } from '../../utils/AnimeRecomendCard';
+import Img from '../../utils/img'
+import s from './ItemCard.module.css'
+import preloader from '../../assets/empty.png'
+import { CharactersStaffList } from './CharactersStaffList'
+import { CharacterNodeType, edge } from '../../types'
+import { Link } from 'react-router-dom'
+import { AnimeRecomendCard } from '../../utils/AnimeRecomendCard'
 
 type ItemCardType = {
-  data: ItemCardDataType;
-  id: number;
-};
+  data: ItemCardDataType
+  id: number
+}
 
 type ItemCardDataType = {
   title: {
-    english: string;
-    native: string;
-  };
-  description: string;
+    english: string
+    native: string
+  }
+  description: string
   startDate: {
-    year: number;
-    month: number;
-    day: number;
-  };
+    year: number
+    month: number
+    day: number
+  }
   endDate: {
-    year: number;
-    month: number;
-    day: number;
-  };
-  season: string;
-  seasonYear: number;
-  episodes: number;
-  duration: number;
-  countryOfOrigin: string;
+    year: number
+    month: number
+    day: number
+  }
+  season: string
+  seasonYear: number
+  episodes: number
+  duration: number
+  countryOfOrigin: string
   coverImage: {
-    extraLarge: string;
-    color: string;
-  };
-  bannerImage: string;
-  genres?: [string];
-  averageScore: number;
+    extraLarge: string
+    color: string
+  }
+  bannerImage: string
+  genres?: [string]
+  averageScore: number
   studios: {
-    nodes: [{ name: string }];
-  };
-  siteUrl: string;
+    nodes: [{ name: string; id: number }]
+  }
+  siteUrl: string
   characters: {
-    edges: [edge];
+    edges: [edge]
     // nodes: [CharacterNodeType];
-  };
+  }
   recommendations: {
-    nodes: [nodesType];
-  };
-};
+    nodes: [nodesType]
+  }
+}
 
 type nodesType = {
   mediaRecommendation: {
     coverImage: {
-      large: string;
-    };
-    id: number;
-    status: string;
+      large: string
+    }
+    id: number
+    status: string
     title: {
-      userPreferred: string;
-      native: string;
-    };
-  };
-};
+      userPreferred: string
+      native: string
+    }
+  }
+}
 
 export const ItemCard: React.FC<ItemCardType> = ({ data, id }) => {
   const {
@@ -85,7 +85,7 @@ export const ItemCard: React.FC<ItemCardType> = ({ data, id }) => {
     genres,
     characters,
     recommendations: { nodes },
-  } = data;
+  } = data
 
   return (
     <div className={s.bg}>
@@ -147,20 +147,24 @@ export const ItemCard: React.FC<ItemCardType> = ({ data, id }) => {
           <h3>Studios:</h3>
           {studios
             ? studios.map((studio) => {
-                return <div>{studio.name}</div>;
+                return (
+                  <div>
+                    <Link to={`/studio/${studio.id}`}>{studio.name}</Link>
+                  </div>
+                )
               })
             : null}
         </div>
         <div>
           <Link to={`/anime/characters/${id}`}>
-            <h2>Characters </h2>
+            <h2 className="h2-black">Characters </h2>
           </Link>
 
           <CharactersStaffList characters={characters} />
         </div>
         <div>
           <Link to={`/anime/recomendations/${id}`}>
-            <h2>Recommendations</h2>
+            <h2 className="h2-black">Recommendations</h2>
           </Link>
 
           <div className={s.charWrapper}>
@@ -172,7 +176,7 @@ export const ItemCard: React.FC<ItemCardType> = ({ data, id }) => {
                       coverImage: { large: limg },
                       title: { userPreferred, native: ntitle },
                     },
-                  } = item;
+                  } = item
                   return (
                     <AnimeRecomendCard
                       key={id + Math.random()}
@@ -181,7 +185,7 @@ export const ItemCard: React.FC<ItemCardType> = ({ data, id }) => {
                       ntitle={ntitle}
                       limg={limg}
                     />
-                  );
+                  )
                 })
               : null}
           </div>
@@ -190,5 +194,5 @@ export const ItemCard: React.FC<ItemCardType> = ({ data, id }) => {
         <a href={siteUrl}>Chech on site</a>
       </div>
     </div>
-  );
-};
+  )
+}

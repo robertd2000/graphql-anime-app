@@ -1,24 +1,24 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 type CharacterCardType = {
   data: {
-    age: string;
-    gender: string;
-    id: number;
+    age: string
+    gender: string
+    id: number
     image: {
-      large: string;
-    };
+      large: string
+    }
     name: {
-      full: string;
-      native: string;
-    };
-    siteUrl: string;
+      full: string
+      native: string
+    }
+    siteUrl: string
     dateOfBirth: {
-      day: number;
-      month: number;
-    };
-  };
-};
+      day: number
+      month: number
+    }
+  }
+}
 
 export const CharacterCard: React.FC<CharacterCardType> = ({ data }) => {
   const {
@@ -29,7 +29,7 @@ export const CharacterCard: React.FC<CharacterCardType> = ({ data }) => {
     name: { full, native },
     siteUrl,
     dateOfBirth: { day, month },
-  } = data;
+  } = data
   return (
     <div className="cardChar">
       <div className="card-image">
@@ -49,5 +49,5 @@ export const CharacterCard: React.FC<CharacterCardType> = ({ data }) => {
         <a href={siteUrl}>Watch on website</a>
       </div>
     </div>
-  );
-};
+  )
+}

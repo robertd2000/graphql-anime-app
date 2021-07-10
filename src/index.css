@@ -52,19 +52,21 @@ code {
   flex-wrap: wrap;
   justify-content: space-around;
   margin-top: 20px;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 }
 
 .card {
+  width: 100%;
   margin: 50px;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
   position: relative;
-  max-width: 400px;
-  max-height: 600px;
+  max-width: 300px;
+  max-height: 450px;
 }
 
 .card-title {
   display: block;
+  font-size: 20px;
   text-align: center;
   color: #fff;
   /* background-color: #51a3f5; */
@@ -76,7 +78,7 @@ code {
 
 .card .img-inner {
   width: 100%;
-  min-width: 400px;
+  min-width: 250px;
 }
 
 .img-inner img {
@@ -101,17 +103,24 @@ code {
 
 .card-desc {
   color: #fff;
-  width: 84%;
+  width: 115%;
   display: block;
-  font-size: 1.2rem;
+  font-size: 14px;
   position: absolute;
-  height: 0;
-  top: 0;
+  left: -20px;
+  right: -20px;
+  top: -20px;
+  bottom: -20px;
   opacity: 0;
-  padding: 18px 8%;
+  /* padding: 18px 8%; */
   background-color: #2982db;
   transition: 0.8s ease;
   border-radius: 35px;
+  text-align: center;
+}
+
+.card-desc h2 {
+  font-size: 20px;
 }
 
 .card-link {
@@ -130,8 +139,12 @@ code {
 
 .card:hover .card-desc {
   margin-top: 0;
-  opacity: 0.8;
-  height: 110%;
+  opacity: 0.9;
+  max-height: 110%;
+  height: -webkit-calc(110%);
+  height: -moz-calc(110%);
+  height: -o-calc(110%);
+  height: calc(110%);
 }
 
 h1 {
@@ -374,4 +387,27 @@ h1 {
   .header-right {
     float: none;
   }
+}
+
+.charWrapper {
+  width: 100%;
+  max-width: 900px;
+  margin: 10px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 20px;
+  margin-bottom: 100px;
+  color: #fff;
+}
+
+h2 {
+  color: #fff;
+}
+.notFound img {
+  max-width: 400px;
+}
+
+.h2-black {
+  color: black;
 }

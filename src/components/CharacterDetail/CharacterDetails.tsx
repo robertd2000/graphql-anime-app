@@ -1,24 +1,24 @@
-import { useQuery } from '@apollo/client';
-import { Link, withRouter } from 'react-router-dom';
-import { GET_CHARACTER_BY_ID } from '../../query/queries';
-import Loader from '../../utils/Loader';
-import { AnimeRecomendCard } from '../../utils/AnimeRecomendCard';
-import s from '../AnimeDetails/CharacterStaff.module.css';
-import s1 from './Character.module.css';
+import { useQuery } from '@apollo/client'
+import { Link, withRouter } from 'react-router-dom'
+import { GET_CHARACTER_BY_ID } from '../../query/queries'
+import Loader from '../../utils/Loader'
+import { AnimeRecomendCard } from '../../utils/AnimeRecomendCard'
+import s from '../AnimeDetails/CharacterStaff.module.css'
+import s1 from './Character.module.css'
 
-import preloader from '../../assets/empty.png';
-import Img from '../../utils/img';
+import preloader from '../../assets/empty.png'
+import Img from '../../utils/img'
 
 const CharacterDetail = (props: any) => {
-  let id = props.match.params.id;
+  let id = props.match.params.id
   const { data, loading } = useQuery(GET_CHARACTER_BY_ID, {
     variables: {
       id,
     },
-  });
+  })
 
   if (loading) {
-    return <Loader />;
+    return <Loader />
   }
 
   const {
@@ -30,7 +30,7 @@ const CharacterDetail = (props: any) => {
     media,
     name: { full, native },
     siteUrl,
-  } = data.Character;
+  } = data.Character
   return (
     <div style={{ backgroundColor: 'white' }}>
       <div
@@ -49,7 +49,7 @@ const CharacterDetail = (props: any) => {
             </div>
             <div className={s.movieInfo}>
               <div className={s.title}>
-                <h2>{full}</h2>
+                <h2 className="h2-black">{full}</h2>
               </div>
               <div className={s.title}>
                 <h3>{native}</h3>
@@ -70,7 +70,7 @@ const CharacterDetail = (props: any) => {
           <a href={siteUrl}>Chech on site</a>
         </div>
       </div>
-      <h2>Media: </h2>
+      <h2 className="h2-black">Media: </h2>
 
       <div className={s1.charWrapper}>
         {media
@@ -81,7 +81,7 @@ const CharacterDetail = (props: any) => {
                   coverImage: { large: limg },
                   title: { english, native: ntitle },
                 },
-              } = item;
+              } = item
               return (
                 <AnimeRecomendCard
                   key={id + Math.random()}
@@ -90,12 +90,12 @@ const CharacterDetail = (props: any) => {
                   ntitle={ntitle}
                   limg={limg}
                 />
-              );
+              )
             })
           : ''}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export const CharacterDetailWrapper = withRouter(CharacterDetail);
+export const CharacterDetailWrapper = withRouter(CharacterDetail)

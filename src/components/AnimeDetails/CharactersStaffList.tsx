@@ -1,23 +1,23 @@
-import { CharacterNodeType, edge } from '../../types';
-import Loader from '../../utils/Loader';
-import { CharacterStaff } from './CharacterStaff';
-import s from './CharacterStaff.module.css';
+import { CharacterNodeType, edge } from '../../types'
+import Loader from '../../utils/Loader'
+import { CharacterStaff } from './CharacterStaff'
+import s from './CharacterStaff.module.css'
 
 type CharactersStaffListType = {
-  characters: CharactersStaffListDataType;
-};
+  characters: CharactersStaffListDataType
+}
 
 type CharactersStaffListDataType = {
-  edges: [edge];
-};
+  edges: [edge]
+}
 
 export const CharactersStaffList: React.FC<CharactersStaffListType> = ({
   characters,
 }) => {
-  const { edges } = characters;
+  const { edges } = characters
 
   if (!edges) {
-    return <Loader />;
+    return <Loader />
   }
   return (
     <div className={s.wrapper}>
@@ -32,7 +32,7 @@ export const CharactersStaffList: React.FC<CharactersStaffListType> = ({
               },
               role,
               voiceActors,
-            } = char;
+            } = char
             return (
               <CharacterStaff
                 key={id}
@@ -44,9 +44,9 @@ export const CharactersStaffList: React.FC<CharactersStaffListType> = ({
                 id={id}
                 voiceActor={voiceActors[0]}
               />
-            );
+            )
           })
         : ''}
     </div>
-  );
-};
+  )
+}

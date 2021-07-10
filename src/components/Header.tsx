@@ -1,8 +1,4 @@
-import { Link } from 'react-router-dom';
-
-const NavBarLink = (props: any) => {
-  return <Link {...props} activeClassName="active" />;
-};
+import { Link } from 'react-router-dom'
 
 const Header = () => {
   return (
@@ -11,22 +7,18 @@ const Header = () => {
         Anime App
       </Link>
       <div className="header-right">
-        <NavBarLink to="/" activeClassName="active" href="#home">
+        <Link to="/" href="#home">
           Home
-        </NavBarLink>
-        <NavBarLink to="/search-anime" activeClassName="active" href="#contact">
+        </Link>
+        <Link to="/search-anime" href="#contact">
           Search Anime
-        </NavBarLink>
-        <NavBarLink
-          to="/search-character"
-          activeClassName="active"
-          href="#contact"
-        >
+        </Link>
+        <Link to="/search-character" href="#contact">
           Search Character
-        </NavBarLink>
+        </Link>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export { Header };
+export { Header }

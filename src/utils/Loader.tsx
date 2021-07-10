@@ -1,4 +1,4 @@
-import './Loader.css';
+import './Loader.css'
 
 let Loader = () => {
   return (
@@ -12,7 +12,7 @@ let Loader = () => {
       <div></div>
       <div></div>
     </div>
-  );
-};
+  )
+}
 
-export default Loader;
+export default Loader

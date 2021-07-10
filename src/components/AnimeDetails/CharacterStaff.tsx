@@ -1,24 +1,24 @@
-import Img from '../../utils/img';
-import s from './CharacterStaff.module.css';
-import preloader from '../../assets/empty.png';
-import { Link } from 'react-router-dom';
+import Img from '../../utils/img'
+import s from './CharacterStaff.module.css'
+import preloader from '../../assets/empty.png'
+import { Link } from 'react-router-dom'
 
 type CharacterStaffType = {
-  fullname: string;
-  native: string;
-  image: string;
-  age: number;
-  role: string;
-  id: number;
+  fullname: string
+  native: string
+  image: string
+  age: number
+  role: string
+  id: number
   voiceActor: {
     name: {
-      full: string;
-    };
+      full: string
+    }
     image: {
-      medium: string;
-    };
-  };
-};
+      medium: string
+    }
+  }
+}
 
 export const CharacterStaff: React.FC<CharacterStaffType> = ({
   id,
@@ -46,5 +46,5 @@ export const CharacterStaff: React.FC<CharacterStaffType> = ({
         <Img preloader={preloader} img={medium} />
       </div>
     </div>
-  );
-};
+  )
+}

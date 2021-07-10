@@ -1,12 +1,12 @@
-import { Link } from 'react-router-dom';
-import s from '../components/CharacterDetail/Character.module.css';
+import { Link } from 'react-router-dom'
+import s from '../components/CharacterDetail/Character.module.css'
 
 type AnimeRecomendCardType = {
-  id: number;
-  limg: string;
-  english: string;
-  ntitle: string;
-};
+  id: number
+  limg: string
+  english: string
+  ntitle: string
+}
 
 export const AnimeRecomendCard: React.FC<AnimeRecomendCardType> = ({
   id,
@@ -25,5 +25,5 @@ export const AnimeRecomendCard: React.FC<AnimeRecomendCardType> = ({
         </div>
       </Link>
     </div>
-  );
-};
+  )
+}

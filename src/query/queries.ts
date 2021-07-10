@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from '@apollo/client'
 
 export const GET_ANIME_LIST = gql`
   query Page($page: Int) {
@@ -19,12 +19,12 @@ export const GET_ANIME_LIST = gql`
         episodes
         seasonYear
         coverImage {
-          extraLarge
+          large
         }
       }
     }
   }
-`;
+`
 
 export const GET_ANIME = gql`
   query Page($page: Int, $search: String) {
@@ -45,12 +45,12 @@ export const GET_ANIME = gql`
         episodes
         seasonYear
         coverImage {
-          extraLarge
+          large
         }
       }
     }
   }
-`;
+`
 
 export const GET_ANIME_DETAILS = gql`
   query Media($id: Int) {
@@ -85,6 +85,7 @@ export const GET_ANIME_DETAILS = gql`
       studios {
         nodes {
           name
+          id
         }
       }
       siteUrl
@@ -137,7 +138,7 @@ export const GET_ANIME_DETAILS = gql`
       }
     }
   }
-`;
+`
 
 export const GET_CHARACTERS = gql`
   query characters($name: String, $page: Int) {
@@ -165,7 +166,7 @@ export const GET_CHARACTERS = gql`
       }
     }
   }
-`;
+`
 
 export const GET_CHARACTER_BY_ID = gql`
   query character($id: Int) {
@@ -202,7 +203,7 @@ export const GET_CHARACTER_BY_ID = gql`
       }
     }
   }
-`;
+`
 
 export const GET_ALL_ANIME_CHARACTERS = gql`
   query media($id: Int, $page: Int) {
@@ -244,7 +245,7 @@ export const GET_ALL_ANIME_CHARACTERS = gql`
       }
     }
   }
-`;
+`
 
 export const GET_ALL_RECOMENDATIONS = gql`
   query media($id: Int, $page: Int) {
@@ -256,10 +257,14 @@ export const GET_ALL_RECOMENDATIONS = gql`
         nodes {
           id
           rating
+
           mediaRecommendation {
+            genres
+            episodes
+            seasonYear
             id
             title {
-              userPreferred
+              english
               native
             }
             status(version: 2)
@@ -271,4 +276,36 @@ export const GET_ALL_RECOMENDATIONS = gql`
       }
     }
   }
-`;
+`
+
+export const GET_STUDIO = gql`
+  query Media($id: Int, $page: Int) {
+    Page(page: 1) {
+      studios(id: $id, sort: SEARCH_MATCH) {
+        name
+        id
+        media(page: $page) {
+          pageInfo {
+            total
+          }
+          nodes {
+            id
+            title {
+              romaji
+              english
+              native
+              userPreferred
+            }
+            coverImage {
+              extraLarge
+              large
+              medium
+              color
+            }
+            seasonYear
+          }
+        }
+      }
+    }
+  }
+`

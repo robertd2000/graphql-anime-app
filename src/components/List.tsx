@@ -1,15 +1,16 @@
-import { Data } from '../types';
-import Loader from '../utils/Loader';
-import { AnimeItem } from './AnimeItem';
-import { Paginator } from '../utils/Paginator';
+import { Data } from '../types'
+import Loader from '../utils/Loader'
+import { AnimeItem } from './AnimeItem'
+import { Paginator } from '../utils/Paginator'
+import { NotFound } from '../utils/NotFound'
 
 type ListType = {
-  page: number;
-  loading: boolean;
-  list: any;
-  totalPages: number;
-  changePage: (page: number) => void;
-};
+  page: number
+  loading: boolean
+  list: any
+  totalPages: number
+  changePage: (page: number) => void
+}
 
 export const List: React.FC<ListType> = ({
   page,
@@ -24,7 +25,7 @@ export const List: React.FC<ListType> = ({
       <div className={'cards'}>
         {list
           ? list.map((page: Data) => {
-              return <AnimeItem key={page.id + Math.random()} data={page} />;
+              return <AnimeItem key={page.id + Math.random()} data={page} />
             })
           : ''}
       </div>
@@ -34,7 +35,9 @@ export const List: React.FC<ListType> = ({
           currentPage={page}
           changePage={changePage}
         />
-      ) : null}
+      ) : (
+        <NotFound />
+      )}
     </div>
-  );
-};
+  )
+}
