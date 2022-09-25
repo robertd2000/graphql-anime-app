@@ -1,5 +1,7 @@
 React App for searhing anime
 
+![preview](https://github.com/robertd2000/portfolio-app-next/blob/main/public/images/1.png?raw=true)
+
 ## Features:
 
 List of anime
