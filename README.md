@@ -26,7 +26,6 @@ Routing
 
 ### Created by React, React Hooks, GraphQL, Apollo
 
-You can [test here](https://robertd2000.github.io/graphql-anime-app/)
 
 ![preview](https://github.com/robertd2000/portfolio-app-next/blob/main/public/images/1_2.png?raw=true)
 ![preview](https://github.com/robertd2000/portfolio-app-next/blob/main/public/images/1_3.png?raw=true)
